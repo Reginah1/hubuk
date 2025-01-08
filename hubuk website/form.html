@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  media="screen and (max-width: 800px)" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  >
+    <link rel="stylesheet"  media="screen and (min-width: 800px)" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  >
+    <link rel="stylesheet" media="screen and (max-width: 800px)" href="mobileform.css" >
+    <link rel="stylesheet" media="screen and (min-width: 800px)" href="form.css" >
+    <title>Document</title>
+    
+</head>
+<body>
+    <script  src="formm.js"></script>
+    <header class="navigation">
+            <div class="logo">
+                <img src="Logomark.png" alt="logo">
+                <span>hubuk</span>
+            </div>
+            <div class="nav-side">
+               <a class="roles">See open roles at hubuk</a>
+                <a href="" class="atag">Apply now</a>
+            </div>
+        <div class="dropdown">
+            <button class="dropbtn"><img src="menu.png"></button>
+                <div class="dropdown-content">
+                    <a href="">Work</a>
+                    <a href="">Services</a>
+                    <a href="">About Us</a>
+                    <a href="form.html">Careers</a>
+                    <a href="#">Start a program</a>
+                </div>
+        </div>
+    </header>
+    <section class="main-container">
+        <div class="headiing"></div>
+                <header class="head">UI/UX Designer</header>
+                <a class="full-time" href="#">Full-time</a>
+                <a class="remote" href="#">Remote</a>
+                <h3 class="h3">Apply for this job</h3>
+        </div>
+        <div class="container">
+            <form name="myForm" id="myForm" method="post" onsubmit= " return validateForm(event)">
+                <div class="forminput">
+                    <div class="inline">
+                        <div class="input">
+                            <label for="fname">First Name</label><br>
+                            <input type="text" name="fname" id="fname" >
+                            <p id="fnameerror" >  </p>
+                        </div>
+                        <div class="input">
+                            <label for="lname">Last Name</label><br>
+                            <input type="text" name="lname" value="" id="lname" >
+                            <P id="lnameerror">  </P>
+                        </div>
+                    </div>
+                    <div class="inline">
+                        <div class="input">
+                            <label for="email">Email Address <Address></Address></label>
+                            <input type="text" name="email" placeholder="email@example.com" id="email">
+                            <P id="emailerror"> </P>
+                        </div>
+                        <div class="input"> 
+                            <label for="phone">Phone Number</label><br>
+                            <input type="text" name="phone" placeholder="Phone Number" id="phone" maxlength="11" ><br>
+                            <P id="phoneerror"> </P>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="paddress">Permanent Address</Address></label><br>
+                        <input type=" text" name="paddress" id="paddress"><br>
+                    </div>
+                    <div class="file-upload">
+                        <div class="file">
+                            <label for="resume" class="upload">Resume/Cv<br>
+                            <div class="in">
+                                <input type="file" name="resume" id="resume" class="resume" value="file" accept=".doc,.docs,.pdf" hidden ><br>
+                                <span class="icon"><i class="fa fa-cloud-upload"></i></span>
+                                <p class="click" style="color: #6C2B89;">Click to upload<span style="color:#667085;"> or drag and drop</span></p>
+                                <p class="warning">The format should be PDF or Word document (Max 5MB)</p>
+                            </div>   
+                            </label>
+                        </div>
+                        <div class="file-upload">
+                            <label for="coverletter">Cover Letter<br>
+                            <div class="in">
+                                <input type="file" name="myletter" value="Cover Letter"  accept=".doc,.docs,.pdf"  id="coverletter" hidden><br>
+                                <span class="icon"><i class="fa fa-cloud-upload"></i></span>
+                                <p class="click" style="color: #6C2B89;">Click to upload<span style="color:#667085;"> or drag and drop</span></p>
+                                <p class="warning">The format should be PDF or Word document (Max 5MB)</p>
+                            </div>
+                            </label>
+                           <div>
+                                <div id="forResume" class="uploadd">
+                                    <div class="left">
+                                        <p id="textpr">Resume/Cv</p>
+                                        <p id="sizer"></p>
+                                    </div>
+                                    <i style="font-size:15px" id="faone" class="fa">&#xf014;</i>
+                                </div>
+                                <div id="forCoverletter" class="uploadd">
+                                    <div class="left">
+                                        <p id="textpcv">Cover Letter</p>
+                                        <p id="sizecv"></p>
+                                    </div>
+                                    <i style="font-size:15px" id="fatwo" class="fa">&#xf014;</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class= "inline">
+                        <div class="input"> 
+                            <label for="link">Linkedin Profile</label>
+                            <input type="url" name="link" placeholder="Linkedin" id="link"></div>
+                        <div class="input">
+                            <label for="portfolio">Portfolio</label>
+                            <input type="url" id="portfolio" name="portfolio" placeholder="Portfolio">
+                        </div>
+                    </div>
+                </div>    
+                <div class="submit">
+                    <input type="submit" value="Submit your application" id="submit" name="submit" >
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="col-1">
+            <div class="logo logo2">
+                <img src="Logomark.png" alt="logo">
+                <span>hubuk</span>
+            </div> 
+            <div class="description">
+                <p>We design, build and launch <br>softwares for ambitious clients <br><br>Info@hubuk.ng</p>
+                <div class="copyright">
+                    <p>© Hubuk 2022. All rights reserved.</p>
+                </div>
+            </div> 
+        </div>
+        <div class="cols">
+            <div class="col-2">
+            <div class="company-list">
+                <h5><strong>Company</strong></h5>
+                <ul>
+                    <li><a href="#">Works</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="follow-us-list">
+                <h5><strong>Follow Us</strong></h5>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div></div>
+        
+    </footer>
+    <script>
+    </script>
+</body>
+</html>

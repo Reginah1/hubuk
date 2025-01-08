@@ -1,0 +1,253 @@
+@font-face {
+    font-family: circularstd;
+    src: url(circular.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: circularstd;
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FEFDFF;
+    height: 100px;
+    align-items: center;
+    margin: 0 30px;
+    max-width: 100%;
+}
+.dropdown{
+    display: none;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+}
+.logo span{
+    color: #231F20;
+    font-size: 32px;
+}
+.nav-side a{
+    margin: 0 20px;
+    font-size: 18px;
+}
+
+.atag{
+    background-color: #6C2B89;
+    padding: 14px 16px;
+    color:#FEFDFF ;
+    text-decoration: none;
+    border-radius: 8px;
+}
+.main-container{
+    width: 70vw;
+    margin: 5vw auto;
+}
+.roles{
+    color: #242424;
+}
+.head{
+    font-size: 7vw;
+}
+.h3{
+    margin-top: 20px;
+    font-size: 57px;
+    font-weight: lighter;
+    font-size: 3.5vw;
+}
+.remote{
+    margin-left: 7px;
+} 
+.full-time, .remote{
+    font-size: 18px;
+    color: #6C2B89;
+    padding: 4px 18px;
+    text-decoration: none;
+    border-radius: 20px;
+    background-color: #D8B3E9;
+}
+.container{
+    max-width: 100%;
+}
+.container .input input{
+    width: 100%;
+    height: 5vh;
+    border-radius: 8px;
+    border: 0.5px solid #75869E;
+    padding: 10px 15px;
+}
+.inline{
+    display: flex;
+    gap: 5%;
+}
+.file-upload{
+    margin-top: 3%;
+} 
+footer{
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 50% 5% 5% 5%;
+}
+
+.copyright{
+    margin-top: 70px;
+}
+footer h5{
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #231F20;
+}
+.cols{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+.follow-us-list{
+    padding: 2%;
+}
+.company-list{
+    padding: 2%;
+}
+.col-2{
+    display: flex;
+    gap: 50%;
+    margin-right: 150px;
+}
+.col-1 ul, .col-2 ul{
+    list-style: none;
+    font-size: 18px;
+}
+.col-1 li, .col-2 li{
+    display: block;
+    padding: 16px 17px;  
+}
+.col-1 li, .col-2 li a{
+    text-decoration: none;
+    color: #242424;
+}
+.description p{
+    font-size: 18px;
+    color: #231F20;
+}
+.logo2{
+    padding-bottom: 20px;
+}
+.file label{
+    font-size: 14px;
+}
+.in{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 3px dashed #75869E;
+    cursor: pointer;
+    border-radius: 10px;
+    gap: 10%;
+    margin-bottom: 20px;
+}
+.file span{
+    font-size: 14px ;
+}
+.click{
+    font-size: 14px;
+}
+.warning{
+    color: #667085;
+    font-size: 12px;
+}
+.icon{
+    width: 5%;
+    height: 3vh;
+}
+.icon i{
+    color: #475467;
+}
+.submit{
+    border-radius: 5px;
+    width: 10%;
+    
+}
+.submit input{
+    background-color: #6C2B89;
+    color: #FEFDFF;
+    border-radius:5px;
+    padding: 10%;
+    margin: 20% 0 5% 0;
+    padding: 20px 0 20px 10;
+   
+}
+
+#forCoverletter, #forResume{
+
+    border: #667085 1px solid;
+    margin: 20px 0 20px 0;
+    padding: 20px 10px 20px 5px;
+    border-radius: 5px;
+    display: none;
+    justify-content: space-between;
+}
+.input{
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+.left{
+    padding-left: 1%;
+}
+#fnameerror, #lnameerror, #emailerror, #phoneerror{
+    color: red;
+}
+.fa{
+    cursor: pointer;
+}
+.thankyou-container {
+    text-align: center;
+    padding: 50px;
+    margin-top: 100px;
+    background-color: #FEFDFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.thankyou-container h1 {
+    font-size: 36px;
+    color: #6C2B89;
+}
+.thankyou-container p {
+    font-size: 20px;
+    color: #242424;
+}
+.thankyou-container .details {
+    font-size: 18px;
+    color: #242424;
+    margin-top: 20px;
+}
+.thankyou-container .btn {
+    background-color:  #6C2B89;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 20px;
+    display: block;
+    width: 200px;
+    margin: 20px 150px ;
+}
+.thankyou-container .btn:hover {
+    background-color:  #231F20;
+}

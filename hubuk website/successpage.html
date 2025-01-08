@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"  media="screen and (max-width: 800px)" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  >
+        <link rel="stylesheet"  media="screen and (min-width: 800px)" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  >
+        <link rel="stylesheet" media="screen and (max-width: 800px)" href="mobileform.css" >
+        <link rel="stylesheet" media="screen and (min-width: 800px)" href="form.css" >
+    </head>
+</head>
+<body>
+
+    <div class="thankyou-container">
+        <h1>Thank You for Your Submission!</h1>
+        <p>We appreciate your effort in applying. Your submission has been received successfully.</p>
+        <div class="details">
+            <p>First Name: <span id="fname"></span></p>
+            <p>Your resume and cover letter are under review, and we will contact you soon.</p>
+        </div>
+        <a href="newindex.html" class="btn">Go Back to Home</a>
+    </div>
+
+    <script>
+        // Get the 'fname' query parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const firstName = urlParams.get('fname');
+
+        // If the first name is present, display it on the page
+        if (firstName) {
+            document.getElementById('fname').textContent = firstName;
+        } else {
+            document.getElementById('fname').textContent = "Valued Applicant";
+        }
+    </script>
+</body>
+</html>
