@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const resume_name = resume_file.name;
                 const resume_size = (resume_file.size / 1024).toFixed(2); // Convert size to KB
                 document.getElementById("textpr").innerHTML = resume_name;
+                document.getElementById("re").innerHTML = "Resume: ";
                 document.getElementById("sizer").innerHTML = `${resume_size} KB`;
                 document.getElementById("forResume").style.display ='flex';
             }
@@ -66,7 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const cv_name = cv_file.name;
                 const cv_size = (cv_file.size / 1024).toFixed(2); // Convert size to KB
                 document.getElementById("textpcv").innerHTML = cv_name ;
-                document.getElementById("sizecv").innerHTML =` ${cv_size} KB`;
+                document.getElementById("cv").innerHTML = "Cover Letter: ";
+                document.getElementById("sizecv").innerHTML =`${cv_size} KB`;
                 document.getElementById("forCoverletter").style.display ='flex';
             }
         });
@@ -79,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Clear the displayed resume name and size
         document.getElementById("forResume").style.display ='none';
-        document.getElementById("textpr").innerHTML = "Resume/Cv";
-        document.getElementById("sizer").innerHTML = "";
+      //  document.getElementById("textpr").innerHTML = "Resume/Cv";
+        //document.getElementById("sizer").innerHTML = "";
         
         // Hide the delete button
         //document.getElementById("faone").style.display = 'none';
