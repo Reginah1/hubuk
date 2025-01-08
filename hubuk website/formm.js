@@ -35,7 +35,7 @@ function validateForm() {
     var phone = document.getElementById('phone').value;
     if (phone.length !== 11) {
         document.getElementById("phoneerror").innerHTML="Please enter a valid Phone Number" ;
-        return false;
+        isValid = false;
     }
     if (isValid) {
         window.location.href = "successpage.html?fname=" + encodeURIComponent(fname);
@@ -69,7 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("warningr").innerHTML = "Invalid File Extention! Can only accept pdf. docx or doc files";
                 resume_input.value= "";
             }
-        }
+            }
+          
         });
     }
 
