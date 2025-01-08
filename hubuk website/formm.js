@@ -45,18 +45,25 @@ function validateForm() {
 document.addEventListener("DOMContentLoaded", function() {
     const resume_input = document.getElementById("resume");
     const cv_input = document.getElementById("coverletter");
-
+    const allowedExtentions = ['pdf','docx', 'doc'];
     if (resume_input) {
         resume_input.addEventListener('change', () => {
             const resume_file = resume_input.files[0];
             if (resume_file) {
                 const resume_name = resume_file.name;
                 const resume_size = (resume_file.size / 1024).toFixed(2); // Convert size to KB
+                const fileExtentionr = resume_name.split('.').pop().toLowerCase();
+            if(allowedExtentions.includes(fileExtentionr)){
                 document.getElementById("textpr").innerHTML = resume_name;
                 document.getElementById("re").innerHTML = "Resume: ";
                 document.getElementById("sizer").innerHTML = `${resume_size} KB`;
                 document.getElementById("forResume").style.display ='flex';
             }
+            else{
+                document.getElementById("warningr").innerHTML = "Invalid File Extention! Can only accept pdf. docx or doc files";
+                resume_input.value= "";
+            }
+        }
         });
     }
 
@@ -66,10 +73,19 @@ document.addEventListener("DOMContentLoaded", function() {
             if (cv_file) {
                 const cv_name = cv_file.name;
                 const cv_size = (cv_file.size / 1024).toFixed(2); // Convert size to KB
-                document.getElementById("textpcv").innerHTML = cv_name ;
-                document.getElementById("cv").innerHTML = "Cover Letter: ";
-                document.getElementById("sizecv").innerHTML =`${cv_size} KB`;
-                document.getElementById("forCoverletter").style.display ='flex';
+                const fileExtentioncv = cv_name.split('.').pop().toLowerCase();
+                if(allowedExtentions.includes(fileExtentioncv)){
+                    document.getElementById("textpcv").innerHTML = cv_name ;
+                    document.getElementById("cv").innerHTML = "Cover Letter: ";
+                    document.getElementById("sizecv").innerHTML =`${cv_size} KB`;
+                    document.getElementById("forCoverletter").style.display ='flex';
+                   
+                }
+                else{
+                    document.getElementById("warningcv").innerHTML = "Invalid File Extention! Can only accept pdf. docx or doc files";
+                    resume_input.value= "";
+                }
+               
             }
         });
     }

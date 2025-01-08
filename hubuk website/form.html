@@ -72,12 +72,13 @@
                     </div>
                     <div class="file-upload">
                         <div class="file">
-                            <label for="resume" class="upload">Resume:/Cv<br>
+                            <label for="resume" class="upload">Resume<br>
                             <div class="in">
                                 <input type="file" name="resume" id="resume" class="resume" value="file" accept=".doc,.docs,.pdf" hidden ><br>
                                 <span class="icon"><i class="fa fa-cloud-upload"></i></span>
                                 <p class="click" style="color: #6C2B89;">Click to upload<span style="color:#667085;"> or drag and drop</span></p>
-                                <p class="warning">The format should be PDF or Word document (Max 5MB)</p>
+                                <p class="warning">The format should be pdf, docx or doc and maximum size 5mb</p>
+                                <p id="warningr"></p>
                             </div>   
                             </label>
                         </div>
@@ -87,7 +88,8 @@
                                 <input type="file" name="myletter" value="Cover Letter"  accept=".doc,.docs,.pdf"  id="coverletter" hidden><br>
                                 <span class="icon"><i class="fa fa-cloud-upload"></i></span>
                                 <p class="click" style="color: #6C2B89;">Click to upload<span style="color:#667085;"> or drag and drop</span></p>
-                                <p class="warning">The format should be PDF or Word document (Max 5MB)</p>
+                                <p class="warning">The format should be pdf, docx or doc and maximum size 5mb</p>
+                                <p id="warningcv"></p>
                             </div>
                             </label>
                            <div>
