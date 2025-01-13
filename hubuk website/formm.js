@@ -43,7 +43,8 @@ function validateForm() {
         isValid = false;
     }
     if (isValid) {
-        window.location.href = "successpage.html?fname=" + encodeURIComponent(fname);
+        
+        submitFormAsJSON();
     }
 }
 
@@ -136,3 +137,52 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+async function submitFormAsJSON() {
+
+    const fname = document.getElementById("fname").value;
+    let lname = document.forms["myForm"]["lname"].value;
+    let email = document.forms["myForm"]["email"].value;
+    let paddress = document.forms["myForm"]["paddress"].value;
+    let phone =  document.getElementById("phone").value;
+    let Linkedin =  document.getElementById("link").value || "";
+    let portfolio = document.getElementById("portfolio").value || "";
+    const formData = new FormData();
+    formData.append("JobId", "1");
+    formData.append("FirstName", fname);
+    formData.append("LasttName", lname);
+    formData.append("Email", email);
+    formData.append("PermanentAddress", paddress);
+    formData.append("PhoneNumber", phone);
+    formData.append("LinkedinProfile", Linkedin);
+    formData.append("PortfolioWebsite", portfolio);
+
+    // Add files
+    const resume = document.getElementById("resume").files[0];
+    const coverLetter = document.getElementById("coverletter").files[0];
+    if (resume) formData.append("CV", resume);
+    if (coverLetter) formData.append("CoverLetter", coverLetter);
+
+    try {
+        const response = await fetch("https://api.hubuk.ng/api/JobApplicantion/Apply", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        window.location.href = "successpage.html?fname=" + encodeURIComponent(fname);
+        console.log(data);
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        document.querySelector(".errormessage").innerHTML = '<span class="error">Failed to submit. Please try again.</span>';
+    }
+}
+
+// Attach form validation to form submission
+document.forms["myForm"].addEventListener("submit", validateForm);
+
+
+
