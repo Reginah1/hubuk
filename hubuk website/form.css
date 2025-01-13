@@ -251,7 +251,7 @@ footer h5{
 .thankyou-container .btn:hover {
     background-color:  #231F20;
 }
-#warningr, #warningcv{
+.inlineerror{
     color: red;
-    font-size: 14px;
+    font-size: 16px;
 }
