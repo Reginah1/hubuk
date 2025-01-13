@@ -11,12 +11,13 @@
     </head>
 </head>
 <body>
+    <script src="formm.js"></script>
 
     <div class="thankyou-container">
         <h1>Thank You for Your Submission!</h1>
         <p>We appreciate your effort in applying. Your submission has been received successfully.</p>
         <div class="details">
-            <p>First Name: <span id="fname"></span></p>
+            <p>First Name: <span id="username"></span></p>
             <p>Your resume and cover letter are under review, and we will contact you soon.</p>
         </div>
         <a href="#" class="btn">Go Back to Home</a>
@@ -25,11 +26,11 @@
     <script>
         // Get the 'fname' query parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
-        const firstName = urlParams.get('fname');
+        const name = localStorage.getItem("fname");
 
         // If the first name is present, display it on the page
-        if (firstName) {
-            document.getElementById('fname').textContent = firstName;
+        if (name) {
+            document.getElementById('username').innerHTML = name;
         } else {
             document.getElementById('fname').textContent = "Valued Applicant";
         }

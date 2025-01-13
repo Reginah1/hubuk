@@ -1,58 +1,58 @@
 document.addEventListener("DOMContentLoaded", function() {
         const submitBtn = document.getElementById("submit");
-    
-        // Form submission handler
-    submitBtn.addEventListener('click', function(event) {
+        submitBtn.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent
-        submitBtn.innerHTML = "Loading...";
-        submitBtn.disabled = true; 
-        //  form from submitting immediately
         let fnameRegex = /^[a-zA-Z\ -]+$/; 
-    let fname = document.forms["myForm"]["fname"].value;
-    let isValid = true;
+        let fname = document.forms["myForm"]["fname"].value;
+        let isValid = true;
 
-    if (fname == "") {
-        document.getElementById("fnameerror").innerHTML = "First Name must not be empty";
-        isValid = false;
-    } else if (!fnameRegex.test(fname)) {
-        document.getElementById("fnameerror").innerHTML = "Please enter a valid name";
-        isValid = false;
-    }
+        if (fname == "") {
+            document.getElementById("fnameerror").innerHTML = "First Name must not be empty";
+            isValid = false;
+        } else if (!fnameRegex.test(fname)) {
+            document.getElementById("fnameerror").innerHTML = "Please enter a valid name";
+            isValid = false;
+        }
 
-    let lname = document.forms["myForm"]["lname"].value;
-    let lnameRegex = /^[a-zA-Z\ -]+$/; 
-    if (lname == "") {
-        document.getElementById("lnameerror").innerHTML = "Last Name must not be empty";
-        isValid = false;
-    } else if (!lnameRegex.test(lname)) {
-        document.getElementById("lnameerror").innerHTML = "Please enter a valid name!";
-        isValid = false;
-    }
+        let lname = document.forms["myForm"]["lname"].value;
+        let lnameRegex = /^[a-zA-Z\ -]+$/; 
+        if (lname == "") {
+            document.getElementById("lnameerror").innerHTML = "Last Name must not be empty";
+            isValid = false;
+        } else if (!lnameRegex.test(lname)) {
+            document.getElementById("lnameerror").innerHTML = "Please enter a valid name!";
+            isValid = false;
+        }
 
-    let email = document.forms["myForm"]["email"].value;
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email == "") {
-        document.getElementById("emailerror").innerHTML = "Email must not be empty";
-        isValid = false;
-    } else if (!emailRegex.test(email)) {
-        document.getElementById("emailerror").innerHTML = "Please enter a valid Email Address!";
-        isValid = false;
-    }
-    const address = document.getElementById("paddress").value;
-    if(address == ""){
-        document.getElementById("addresserror").innerHTML="Please enter your address";
-        isValid = false;
-    }
-    var phone = document.getElementById('phone').value;
-    if (phone.length !== 11) {
-        document.getElementById("phoneerror").innerHTML="Please enter a valid Phone Number" ;
-        isValid = false;
-    }
-    if (!isValid) {
-        submitBtn.innerHTML = "Submit";
-        submitBtn.disabled = false;
-    }
-    submitFormAsJSON();
+        let email = document.forms["myForm"]["email"].value;
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email == "") {
+            document.getElementById("emailerror").innerHTML = "Email must not be empty";
+            isValid = false;
+        } else if (!emailRegex.test(email)) {
+            document.getElementById("emailerror").innerHTML = "Please enter a valid Email Address!";
+            isValid = false;
+        }
+        const address = document.getElementById("paddress").value;
+        if(address == ""){
+            document.getElementById("addresserror").innerHTML="Please enter your address";
+            isValid = false;
+        }
+        var phone = document.getElementById('phone').value;
+        if (phone.length !== 11) {
+            document.getElementById("phoneerror").innerHTML="Please enter a valid Phone Number" ;
+            isValid = false;
+        }
+        if (!isValid) {
+            document.getElementById("submit").innerHTML = "Submit your application";
+            document.getElementById("submit").disabled = false;
+           
+        }else{
+            document.getElementById("submit").innerHTML = "Loading.....";
+            document.getElementById("submit").disabled = true;
+            localStorage.setItem("fname", fname);
+        }
+        submitFormAsJSON();
     
     });
 });
@@ -175,26 +175,28 @@ async function submitFormAsJSON() {
             method: "POST",
             body: formData,
         });
-        document.getElementById("submit").innerHTML = "Submit";
-        document.getElementById("submit").disabled = false;
         if(response.status === 200){
-            alert("Successfully connected")
-          //  window.location.href = "successpage.html?fname=" + encodeURIComponent(fname);
+           window.location.href = "successpage.html";
+           document.getElementById("submit").innerHTML = "Submited";
+           document.getElementById("submit").disabled = false;
         }
         else if(response.status === 500){
-            alert("Server Error");
-            window.location.href = "errorpage.html";
+            throw new Error(`HTTP error! Status: ${response.status}`);
+            
         }
-        else if(response.status === 404){
-            alert("Not Found!");
+        else if(response.status === 400){
+            throw new Error("Bad Request: Please check your input");
         }
         else{
-            alert("Failed to connect");
+            throw new Error(`HTTP error! Status: ${response.status} Unexpected error`);
         }
     } catch (error) {
         console.error("Error submitting form:", error);
         document.getElementsByClassName("errormessage").innerHTML = '<span class="error">Failed to submit. Please try again.</span>';
-        document.getElementById("submit").innerHTML = "Submit";
+        window.location.href = "errorpage.html";
+    }
+    finally{
+        document.getElementById("submit").innerHTML = "Submit your application";
         document.getElementById("submit").disabled = false;
     }
 }
