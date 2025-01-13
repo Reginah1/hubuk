@@ -1,7 +1,13 @@
-function validateForm() {
-    event.preventDefault();
-
-    let fnameRegex = /^[a-zA-Z\ -]+$/; 
+document.addEventListener("DOMContentLoaded", function() {
+        const submitBtn = document.getElementById("submit");
+    
+        // Form submission handler
+    submitBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent
+        submitBtn.innerHTML = "Loading...";
+        submitBtn.disabled = true; 
+        //  form from submitting immediately
+        let fnameRegex = /^[a-zA-Z\ -]+$/; 
     let fname = document.forms["myForm"]["fname"].value;
     let isValid = true;
 
@@ -42,11 +48,14 @@ function validateForm() {
         document.getElementById("phoneerror").innerHTML="Please enter a valid Phone Number" ;
         isValid = false;
     }
-    if (isValid) {
-        
-        submitFormAsJSON();
+    if (!isValid) {
+        submitBtn.innerHTML = "Submit";
+        submitBtn.disabled = false;
     }
-}
+    submitFormAsJSON();
+    
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     const resume_input = document.getElementById("resume");
@@ -138,11 +147,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 async function submitFormAsJSON() {
-
     const fname = document.getElementById("fname").value;
     let lname = document.forms["myForm"]["lname"].value;
     let email = document.forms["myForm"]["email"].value;
-    let paddress = document.forms["myForm"]["paddress"].value;
+    let address = document.forms["myForm"]["paddress"].value;
     let phone =  document.getElementById("phone").value;
     let Linkedin =  document.getElementById("link").value || "";
     let portfolio = document.getElementById("portfolio").value || "";
@@ -151,7 +159,7 @@ async function submitFormAsJSON() {
     formData.append("FirstName", fname);
     formData.append("LasttName", lname);
     formData.append("Email", email);
-    formData.append("PermanentAddress", paddress);
+    formData.append("PermanentAddress", address);
     formData.append("PhoneNumber", phone);
     formData.append("LinkedinProfile", Linkedin);
     formData.append("PortfolioWebsite", portfolio);
@@ -167,22 +175,30 @@ async function submitFormAsJSON() {
             method: "POST",
             body: formData,
         });
-
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+        document.getElementById("submit").innerHTML = "Submit";
+        document.getElementById("submit").disabled = false;
+        if(response.status === 200){
+            alert("Successfully connected")
+          //  window.location.href = "successpage.html?fname=" + encodeURIComponent(fname);
         }
-
-        const data = await response.json();
-        window.location.href = "successpage.html?fname=" + encodeURIComponent(fname);
-        console.log(data);
+        else if(response.status === 500){
+            alert("Server Error");
+            window.location.href = "errorpage.html";
+        }
+        else if(response.status === 404){
+            alert("Not Found!");
+        }
+        else{
+            alert("Failed to connect");
+        }
     } catch (error) {
         console.error("Error submitting form:", error);
-        document.querySelector(".errormessage").innerHTML = '<span class="error">Failed to submit. Please try again.</span>';
+        document.getElementsByClassName("errormessage").innerHTML = '<span class="error">Failed to submit. Please try again.</span>';
+        document.getElementById("submit").innerHTML = "Submit";
+        document.getElementById("submit").disabled = false;
     }
 }
 
-// Attach form validation to form submission
-document.forms["myForm"].addEventListener("submit", validateForm);
 
 
 
