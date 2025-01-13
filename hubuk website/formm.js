@@ -182,7 +182,7 @@ async function submitFormAsJSON() {
         }
         else if(response.status === 500){
             throw new Error(`HTTP error! Status: ${response.status}`);
-            
+            window.location.href = "errorpage.html";
         }
         else if(response.status === 400){
             throw new Error("Bad Request: Please check your input");
@@ -193,7 +193,7 @@ async function submitFormAsJSON() {
     } catch (error) {
         console.error("Error submitting form:", error);
         document.getElementsByClassName("errormessage").innerHTML = '<span class="error">Failed to submit. Please try again.</span>';
-        window.location.href = "errorpage.html";
+        
     }
     finally{
         document.getElementById("submit").innerHTML = "Submit your application";
